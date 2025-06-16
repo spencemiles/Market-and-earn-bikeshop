@@ -1010,120 +1010,113 @@
     </section>
 
 <script>
-        // Sample data for top 10 affiliate sellers
-        const affSellers = [
-            { name: "Alex Johnson", sales: 1428, commission: 4284, progress: 100 },
-            { name: "Sarah Williams", sales: 1320, commission: 3960, progress: 92 },
-            { name: "Michael Chen", sales: 1215, commission: 3645, progress: 85 },
-            { name: "Emma Rodriguez", sales: 1089, commission: 3267, progress: 76 },
-            { name: "David Kim", sales: 975, commission: 2925, progress: 68 },
-            { name: "Olivia Martinez", sales: 842, commission: 2526, progress: 59 },
-            { name: "James Wilson", sales: 765, commission: 2295, progress: 54 },
-            { name: "Sophia Brown", sales: 689, commission: 2067, progress: 48 },
-            { name: "Benjamin Taylor", sales: 598, commission: 1794, progress: 42 },
-            { name: "Isabella Davis", sales: 512, commission: 1536, progress: 36 }
-        ];
+    // Updated data for top 10 affiliate sellers in Kenya with Ksh
+    const affSellers = [
+        { name: "Lillian Wambua", sales: 24, commission: 11000, progress: 100 },
+        { name: "Sarah Mulwe", sales: 22, commission: 10000, progress: 92 },
+        { name: "Michael Chende", sales: 12, commission: 4500, progress: 85 },
+        { name: "Emma Githinji", sales: 10, commission: 3250, progress: 76 },
+        { name: "David Kimani", sales: 7, commission: 2980, progress: 68 },
+        { name: "Olivia Wambua", sales: 8, commission: 2510, progress: 59 },
+        { name: "James Wilson", sales: 7, commission: 2270, progress: 54 },
+        { name: "Sophia Wanjiru", sales: 6, commission: 2250, progress: 48 },
+        { name: "Benjamin Musyoka", sales: 5, commission: 1117, progress: 42 },
+        { name: "Isabella Mwimi", sales: 5, commission: 980, progress: 36 }
+    ];
 
-        const affCollapsed = document.getElementById('affCollapsed');
-        const affExpanded = document.getElementById('affExpanded');
-        const affLeaderboard = document.getElementById('affLeaderboard');
-        const affRefreshBtn = document.getElementById('affRefreshBtn');
-        const affCloseBtn = document.getElementById('affCloseBtn');
+    const affCollapsed = document.getElementById('affCollapsed');
+    const affExpanded = document.getElementById('affExpanded');
+    const affLeaderboard = document.getElementById('affLeaderboard');
+    const affRefreshBtn = document.getElementById('affRefreshBtn');
+    const affCloseBtn = document.getElementById('affCloseBtn');
 
-        // Function to create leaderboard items
-        function createAffLeaderboard() {
-            affLeaderboard.innerHTML = '';
+    // Function to create leaderboard items
+    function createAffLeaderboard() {
+        affLeaderboard.innerHTML = '';
+        
+        affSellers.forEach((seller, index) => {
+            const item = document.createElement('div');
+            item.className = 'aff-item';
+            item.style.animationDelay = `${index * 0.1}s`;
             
-            affSellers.forEach((seller, index) => {
-                const item = document.createElement('div');
-                item.className = 'aff-item';
-                item.style.animationDelay = `${index * 0.1}s`;
-                
-                // Add crown to top seller
-                const crown = index === 0 ? '<div class="aff-crown"><i class="fas fa-crown"></i></div>' : '';
-                
-                item.innerHTML = `
-                    ${crown}
-                    <div class="aff-rank ${index < 3 ? 'aff-rank-' + (index + 1) : ''}">${index + 1}</div>
-                    <div class="aff-info">
-                        <div class="aff-name">${seller.name}</div>
-                        <div class="aff-stats">
-                            <span>Sales: <span class="aff-sales">${seller.sales.toLocaleString()}</span></span>
-                            <span>Commission: $<span class="aff-commission">${seller.commission.toLocaleString()}</span></span>
-                        </div>
-                        <div class="aff-progress-bar">
-                            <div class="aff-progress" style="width: ${seller.progress}%"></div>
-                        </div>
+            const crown = index === 0 ? '<div class="aff-crown"><i class="fas fa-crown"></i></div>' : '';
+            
+            item.innerHTML = `
+                ${crown}
+                <div class="aff-rank ${index < 3 ? 'aff-rank-' + (index + 1) : ''}">${index + 1}</div>
+                <div class="aff-info">
+                    <div class="aff-name">${seller.name}</div>
+                    <div class="aff-stats">
+                        <span>Sales: <span class="aff-sales">${seller.sales.toLocaleString()}</span></span>
+                        <span>Commission: Ksh <span class="aff-commission">${seller.commission.toLocaleString()}</span></span>
                     </div>
-                `;
-                
-                affLeaderboard.appendChild(item);
-                
-                // Animate item entrance
-                setTimeout(() => {
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateY(0)';
-                    
-                    // Animate progress bar
-                    const progressBar = item.querySelector('.aff-progress');
-                    progressBar.style.width = seller.progress + '%';
-                }, 500 + (index * 100));
-            });
-        }
-        
-        // Toggle between collapsed and expanded states
-        affCollapsed.addEventListener('click', function() {
-            this.style.display = 'none';
-            affExpanded.style.display = 'block';
-            createAffLeaderboard();
-        });
-        
-        affCloseBtn.addEventListener('click', function() {
-            affExpanded.style.display = 'none';
-            affCollapsed.style.display = 'flex';
-        });
-        
-        // Initialize leaderboard on page load
-        window.addEventListener('DOMContentLoaded', function() {
-            // Create the leaderboard but don't show it yet
-            createAffLeaderboard();
-        });
-        
-        // Refresh button functionality
-        affRefreshBtn.addEventListener('click', function() {
-            // Add animation effect to button
-            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
+                    <div class="aff-progress-bar">
+                        <div class="aff-progress" style="width: ${seller.progress}%"></div>
+                    </div>
+                </div>
+            `;
             
-            // Simulate loading new data
+            affLeaderboard.appendChild(item);
+            
             setTimeout(() => {
-                this.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Leaderboard';
-                createAffLeaderboard();
-                
-                // Add a notification effect
-                const notification = document.createElement('div');
-                notification.textContent = 'Leaderboard updated!';
-                notification.style.position = 'fixed';
-                notification.style.top = '70px';
-                notification.style.right = '30px';
-                notification.style.background = '#28a745';
-                notification.style.color = 'white';
-                notification.style.padding = '10px 20px';
-                notification.style.borderRadius = '5px';
-                notification.style.boxShadow = '0 3px 10px rgba(0,0,0,0.2)';
-                notification.style.zIndex = '10001';
-                notification.style.fontWeight = '600';
-                document.body.appendChild(notification);
-                
-                setTimeout(() => {
-                    notification.style.opacity = '0';
-                    notification.style.transform = 'translateY(-20px)';
-                    setTimeout(() => {
-                        document.body.removeChild(notification);
-                    }, 500);
-                }, 2000);
-            }, 1500);
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+                const progressBar = item.querySelector('.aff-progress');
+                progressBar.style.width = seller.progress + '%';
+            }, 500 + (index * 100));
         });
-    </script>
+    }
+
+    // Toggle between collapsed and expanded states
+    affCollapsed.addEventListener('click', function() {
+        this.style.display = 'none';
+        affExpanded.style.display = 'block';
+        createAffLeaderboard();
+    });
+
+    affCloseBtn.addEventListener('click', function() {
+        affExpanded.style.display = 'none';
+        affCollapsed.style.display = 'flex';
+    });
+
+    // Initialize leaderboard on page load
+    window.addEventListener('DOMContentLoaded', function() {
+        createAffLeaderboard();
+    });
+
+    // Refresh button functionality
+    affRefreshBtn.addEventListener('click', function() {
+        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
+        
+        setTimeout(() => {
+            this.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Leaderboard';
+            createAffLeaderboard();
+
+            const notification = document.createElement('div');
+            notification.textContent = 'Leaderboard updated!';
+            notification.style.position = 'fixed';
+            notification.style.top = '70px';
+            notification.style.right = '30px';
+            notification.style.background = '#28a745';
+            notification.style.color = 'white';
+            notification.style.padding = '10px 20px';
+            notification.style.borderRadius = '5px';
+            notification.style.boxShadow = '0 3px 10px rgba(0,0,0,0.2)';
+            notification.style.zIndex = '10001';
+            notification.style.fontWeight = '600';
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateY(-20px)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 500);
+            }, 2000);
+        }, 1500);
+    });
+</script>
+
     <!-- System Overview -->
     <section id="overview">
         <div class="container">
