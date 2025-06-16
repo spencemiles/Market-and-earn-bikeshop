@@ -992,8 +992,8 @@
     <section class="aff-leaderboard-expanded" id="affExpanded" style="display: none;">
         <div class="aff-header">
             <button class="aff-close-btn" id="affCloseBtn">&times;</button>
-            <h2>Top Affiliate Sellers</h2>
-            <p>June 2024 Performance Leaderboard</p>
+            <h2>This Month Top Affiliate Sellers</h2>
+            <p>June 2025 Performance Leaderboard</p>
         </div>
         
         <div class="aff-leaderboard" id="affLeaderboard">
@@ -1009,21 +1009,20 @@
         </div>
     </section>
 
-    <script>
+<script>
         // Sample data for top 10 affiliate sellers
-  const affSellers = [
-    { name: "Lillian Wambua", sales: 24, commission: 11000, progress: 100 },
-    { name: "Sarah Mulwe", sales: 22, commission: 10000, progress: 92 },
-    { name: "Michael Chende", sales: 12, commission: 4500, progress: 85 },
-    { name: "Emma Githinji", sales: 10, commission: 3250, progress: 76 },
-    { name: "David Kimani", sales: 7, commission: 2980, progress: 68 },
-    { name: "Olivia Wambua", sales: 8, commission: 2510, progress: 59 },
-    { name: "James Wilson", sales: 7, commission: 2270, progress: 54 },
-    { name: "Sophia Wanjiru", sales: 6, commission: 2250, progress: 48 },
-    { name: "Benjamin Musyoka", sales: 5, commission: 1117, progress: 42 },
-    { name: "Isabella Mwimi", sales: 5, commission: 980, progress: 36 }
-];
-
+        const affSellers = [
+            { name: "Alex Johnson", sales: 1428, commission: 4284, progress: 100 },
+            { name: "Sarah Williams", sales: 1320, commission: 3960, progress: 92 },
+            { name: "Michael Chen", sales: 1215, commission: 3645, progress: 85 },
+            { name: "Emma Rodriguez", sales: 1089, commission: 3267, progress: 76 },
+            { name: "David Kim", sales: 975, commission: 2925, progress: 68 },
+            { name: "Olivia Martinez", sales: 842, commission: 2526, progress: 59 },
+            { name: "James Wilson", sales: 765, commission: 2295, progress: 54 },
+            { name: "Sophia Brown", sales: 689, commission: 2067, progress: 48 },
+            { name: "Benjamin Taylor", sales: 598, commission: 1794, progress: 42 },
+            { name: "Isabella Davis", sales: 512, commission: 1536, progress: 36 }
+        ];
 
         const affCollapsed = document.getElementById('affCollapsed');
         const affExpanded = document.getElementById('affExpanded');
@@ -1038,26 +1037,25 @@
             affSellers.forEach((seller, index) => {
                 const item = document.createElement('div');
                 item.className = 'aff-item';
-                item.style.animationDelay = `ksh{index * 0.1}s`;
+                item.style.animationDelay = `${index * 0.1}s`;
                 
                 // Add crown to top seller
                 const crown = index === 0 ? '<div class="aff-crown"><i class="fas fa-crown"></i></div>' : '';
                 
-                item.innerHTML = 
+                item.innerHTML = `
                     ${crown}
                     <div class="aff-rank ${index < 3 ? 'aff-rank-' + (index + 1) : ''}">${index + 1}</div>
                     <div class="aff-info">
                         <div class="aff-name">${seller.name}</div>
                         <div class="aff-stats">
                             <span>Sales: <span class="aff-sales">${seller.sales.toLocaleString()}</span></span>
-                            <span>Commission: ksh <span class="aff-commission">${seller.commission.toLocaleString()}</span></span>
+                            <span>Commission: $<span class="aff-commission">${seller.commission.toLocaleString()}</span></span>
                         </div>
                         <div class="aff-progress-bar">
                             <div class="aff-progress" style="width: ${seller.progress}%"></div>
                         </div>
                     </div>
-                ;
-
+                `;
                 
                 affLeaderboard.appendChild(item);
                 
