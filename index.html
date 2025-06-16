@@ -1012,16 +1012,16 @@
     <script>
         // Sample data for top 10 affiliate sellers
         const affSellers = [
-            { name: "Alex Johnson", sales: 1428, commission: 4284, progress: 100 },
-            { name: "Sarah Williams", sales: 1320, commission: 3960, progress: 92 },
-            { name: "Michael Chen", sales: 1215, commission: 3645, progress: 85 },
-            { name: "Emma Rodriguez", sales: 1089, commission: 3267, progress: 76 },
-            { name: "David Kim", sales: 975, commission: 2925, progress: 68 },
-            { name: "Olivia Martinez", sales: 842, commission: 2526, progress: 59 },
-            { name: "James Wilson", sales: 765, commission: 2295, progress: 54 },
-            { name: "Sophia Brown", sales: 689, commission: 2067, progress: 48 },
-            { name: "Benjamin Taylor", sales: 598, commission: 1794, progress: 42 },
-            { name: "Isabella Davis", sales: 512, commission: 1536, progress: 36 }
+            { name: "Lillian wambua", sales: 24, commission: 112, progress: 100 },
+            { name: "Sarah mulwe", sales: 22, commission: 100, progress: 92 },
+            { name: "Michael Chende", sales: 12, commission: 45, progress: 85 },
+            { name: "Emma githinji", sales: 10, commission: 32, progress: 76 },
+            { name: "David Kimani", sales: 7, commission: 29, progress: 68 },
+            { name: "Olivia wambua", sales: 8, commission: 25, progress: 59 },
+            { name: "James Wilson", sales: 7, commission: 22, progress: 54 },
+            { name: "Sophia wanjiru", sales: 6, commission: 20, progress: 48 },
+            { name: "Benjamin Musyoka", sales: 5, commission: 17, progress: 42 },
+            { name: "Isabella mwimi", sales: 5, commission: 15, progress: 36 }
         ];
 
         const affCollapsed = document.getElementById('affCollapsed');
@@ -1037,7 +1037,7 @@
             affSellers.forEach((seller, index) => {
                 const item = document.createElement('div');
                 item.className = 'aff-item';
-                item.style.animationDelay = `${index * 0.1}s`;
+                item.style.animationDelay = `ksh{index * 0.1}s`;
                 
                 // Add crown to top seller
                 const crown = index === 0 ? '<div class="aff-crown"><i class="fas fa-crown"></i></div>' : '';
