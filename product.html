@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse our wide selection of premium bikes and cycling accessories. Mountain bikes, road bikes, helmets, gloves and more.">
+    <title>Products | PedalPower</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+</head>
+<body>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/+254712345678" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <p>Free shipping on orders over $50</p>
+                <div class="top-links">
+                    <a href="affiliate.html">Become an Affiliate</a>
+                    <a href="#contact">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="index.html">Pedal<span>Power</span></a>
+                </div>
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Bikes</a></li>
+                        <li><a href="products.html?category=accessories">Accessories</a></li>
+                        <li><a href="#deals">Top Deals</a></li>
+                        <li><a href="affiliate.html">Affiliate Program</a></li>
+                    </ul>
+                </nav>
+                <div class="nav-icons">
+                    <a href="#" id="search-btn"><i class="fas fa-search"></i></a>
+                    <a href="cart.html"><i class="fas fa-shopping-cart"><span class="cart-count">0</span></i></a>
+                    <div class="menu-btn">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Form -->
+    <div class="search-form-container">
+        <div class="container">
+            <form id="search-form">
+                <input type="search" placeholder="Search for bikes, accessories..." id="search-box">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+            <div id="search-results"></div>
+            <span class="close-search"><i class="fas fa-times"></i></span>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Products</h1>
+            <p>Premium bikes and cycling accessories for all your needs</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-filter">
+                <div class="filter-toggle">
+                    <span>Filter <i class="fas fa-sliders-h"></i></span>
+                </div>
+                <div class="filter-options">
+                    <div class="filter-group">
+                        <h4>Categories</h4>
+                        <ul class="category-filter">
+                            <li><a href="products.html">All Products</a></li>
+                            <li><a href="products.html?category=mountain">Mountain Bikes</a></li>
+                            <li><a href="products.html?category=road">Road Bikes</a></li>
+                            <li><a href="products.html?category=helmets">Helmets</a></li>
+                            <li><a href="products.html?category=gloves">Gloves</a></li>
+                            <li><a href="products.html?category=tires">Tires</a></li>
+                            <li><a href="products.html?category=repair">Repair Kits</a></li>
+                        </ul>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Price Range</h4>
+                        <div class="price-range">
+                            <input type="range" min="0" max="5000" value="5000" class="slider" id="priceRange">
+                            <div class="price-values">
+                                <span>$0</span>
+                                <span>$5000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Sort By</h4>
+                        <select id="sortBy">
+                            <option value="default">Default</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="name-asc">Name: A-Z</option>
+                            <option value="name-desc">Name: Z-A</option>
+                            <option value="rating">Highest Rated</option>
+                        </select>
+                    </div>
+                    <button class="apply-filter btn">Apply Filters</button>
+                </div>
+            </div>
+            <div class="products-grid">
+                <!-- Products will be loaded via JavaScript -->
+            </div>
+            <div class="pagination">
+                <a href="#" class="page-nav disabled"><i class="fas fa-chevron-left"></i></a>
+                <a href="#" class="page-num active">1</a>
+                <a href="#" class="page-num">2</a>
+                <a href="#" class="page-num">3</a>
+                <a href="#" class="page-nav"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Get the latest updates on new products, promotions and cycling tips.</p>
+                <form id="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>PedalPower</h3>
+                    <p>Your one-stop shop for premium bikes and cycling accessories. We're passionate about cycling and committed to providing quality products.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="#deals">Top Deals</a></li>
+                        <li><a href="affiliate.html">Affiliate Program</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns & Refunds</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col" id="contact">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Cycling Road, Bike City</li>
+                        <li><i class="fas fa-phone"></i> +1 (234) 567-8900</li>
+                        <li><i class="fas fa-envelope"></i> info@pedalpower.com</li>
+                        <li><i class="fab fa-whatsapp"></i> +254712345678</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 PedalPower. All Rights Reserved.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                    <i class="fab fa-cc-apple-pay"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/products.js"></script>
+</body>
+</html>

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Commission Calculator | Cycle Edge</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e2edff 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background: linear-gradient(to right, #0d5ca6, #2c8aee);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(13, 92, 166, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-icon {
+            background: white;
+            color: #0d5ca6;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .tiers-section, .calculator-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #eef2f7;
+        }
+        
+        .tiers-section:hover, .calculator-section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .tiers-section::before, .calculator-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #2ecc71, #3498db);
+        }
+        
+        .section-title {
+            color: #0d5ca6;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.7rem;
+            position: relative;
+        }
+        
+        .section-title i {
+            background: #e8f4fc;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .commission-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .commission-table th {
+            background: linear-gradient(to bottom, #3498db, #2980b9);
+            color: white;
+            padding: 18px;
+            text-align: left;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        .commission-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        
+        .commission-table tr:hover {
+            background-color: #edf7ff;
+            transform: scale(1.01);
+            transition: transform 0.2s ease;
+        }
+        
+        .commission-table td {
+            padding: 16px;
+            border-bottom: 1px solid #eef2f7;
+            font-size: 1.05rem;
+        }
+        
+        .rate-cell {
+            font-weight: bold;
+            color: #2ecc71;
+            font-size: 1.2rem;
+        }
+        
+        .input-group {
+            margin-bottom: 25px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 17px 20px;
+            border: 2px solid #e0e6ed;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            background: #f9fbfd;
+            color: #1a3c6c;
+            font-weight: 500;
+        }
+        
+        .input-group input:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
+            background: white;
+        }
+        
+        .input-group input::placeholder {
+            color: #a0aec0;
+            font-weight: normal;
+        }
+        
+        .btn {
+            background: linear-gradient(to right, #2ecc71, #27ae60);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 6px 15px rgba(46, 204, 113, 0.3);
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.4);
+            background: linear-gradient(to right, #27ae60, #2ecc71);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn-clear {
+            background: linear-gradient(to right, #e74c3c, #c0392b);
+            box-shadow: 0 6px 15px rgba(231, 76, 60, 0.3);
+        }
+        
+        .btn-clear:hover {
+            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.4);
+            background: linear-gradient(to right, #c0392b, #e74c3c);
+        }
+        
+        .results {
+            background: linear-gradient(to bottom, #e8f4fc, #d4e8ff);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 25px;
+            text-align: center;
+            border-left: 5px solid #3498db;
+            display: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .results::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 60px;
+            height: 60px;
+            background: #3498db;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+        
+        .results.show {
+            display: block;
+            animation: fadeIn 0.6s ease;
+        }
+        
+        .result-title {
+            color: #0d5ca6;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            text-align: center;
+        }
+        
+        .result-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .result-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .result-label {
+            font-size: 1rem;
+            color: #4a5568;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .result-value {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #1a3c6c;
+        }
+        
+        .bike-price .result-value {
+            color: #3498db;
+        }
+        
+        .commission-percent .result-value {
+            color: #2ecc71;
+        }
+        
+        .affiliate-earnings .result-value {
+            color: #e74c3c;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(to right, #2c3e50, #1a2530);
+            color: white;
+            border-radius: 15px;
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .powered-by {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: #2ecc71;
+        }
+        
+        .copyright {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 900px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            header {
+                padding: 25px 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .logo-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 26px;
+            }
+            
+            .tiers-section, .calculator-section {
+                padding: 25px 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .commission-table th, 
+            .commission-table td {
+                padding: 14px 12px;
+                font-size: 1rem;
+            }
+            
+            .input-group input {
+                padding: 15px;
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                padding: 16px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-bicycle"></i>
+                </div>
+                <div>
+                    <h1>Bike Commission Calculator</h1>
+                    <p class="subtitle">Calculate affiliate commissions for bicycle sales in Kenya</p>
+                </div>
+            </div>
+        </header>
+        
+        <main>
+            <div class="content">
+                <!-- Commission Tiers Section -->
+                <section class="tiers-section">
+                    <h2 class="section-title"><i class="fas fa-chart-line"></i> Commission Structure</h2>
+                    <table class="commission-table">
+                        <thead>
+                            <tr>
+                                <th>Bike Price Range (KSh)</th>
+                                <th>Commission Rate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>10,000 – 49,999</td>
+                                <td class="rate-cell">5%</td>
+                            </tr>
+                            <tr>
+                                <td>50,000 – 99,999</td>
+                                <td class="rate-cell">7%</td>
+                            </tr>
+                            <tr>
+                                <td>100,000 – 149,999</td>
+                                <td class="rate-cell">10%</td>
+                            </tr>
+                            <tr>
+                                <td>150,000 – 200,000</td>
+                                <td class="rate-cell">12%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="info-note" style="margin-top: 25px; padding: 15px; background: #f0f9ff; border-radius: 12px; border-left: 4px solid #3498db;">
+                        <p style="display: flex; align-items: flex-start; gap: 10px;"><i class="fas fa-info-circle" style="color: #3498db; font-size: 1.2rem; margin-top: 3px;"></i> Commissions are calculated instantly based on the bicycle sale price. Higher value bikes earn higher commission rates.</p>
+                    </div>
+                </section>
+                
+                <!-- Calculator Section -->
+                <section class="calculator-section">
+                    <h2 class="section-title"><i class="fas fa-calculator"></i> Commission Calculator</h2>
+                    
+                    <div class="input-group">
+                        <label for="sale-price"><i class="fas fa-tag"></i> Enter Bike Sale Price (KSh):</label>
+                        <input type="number" id="sale-price" placeholder="Enter amount between 10,000 and 200,000" min="10000" max="200000">
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <button id="calculate-btn" class="btn">
+                            <i class="fas fa-calculator"></i> Calculate
+                        </button>
+                        <button id="clear-btn" class="btn btn-clear">
+                            <i class="fas fa-redo"></i> Clear
+                        </button>
+                    </div>
+                    
+                    <div id="results" class="results">
+                        <h3 class="result-title"><i class="fas fa-file-invoice-dollar"></i> Commission Results</h3>
+                        <div class="result-grid">
+                            <div class="result-card bike-price">
+                                <div class="result-label">Bike Price</div>
+                                <div id="bike-price" class="result-value">KSh 0</div>
+                            </div>
+                            <div class="result-card commission-percent">
+                                <div class="result-label">Commission Rate</div>
+                                <div id="commission-rate" class="result-value">0%</div>
+                            </div>
+                            <div class="result-card affiliate-earnings">
+                                <div class="result-label">Affiliate Earnings</div>
+                                <div id="affiliate-earnings" class="result-value">KSh 0</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="visual-indicator" style="margin-top: 30px; text-align: center; padding: 20px; background: #f8f9fa; border-radius: 15px;">
+                        <h4 style="margin-bottom: 15px; color: #3498db; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                            <i class="fas fa-lightbulb"></i> Maximize Your Earnings
+                        </h4>
+                        <p style="color: #4a5568;">Sell higher value bikes to unlock better commission rates. Every bike above KSh 150,000 earns 12% commission!</p>
+                    </div>
+                </section>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="powered-by">
+                <span>Powered by</span>
+                <span class="footer-logo">
+                    <i class="fas fa-bicycle"></i>
+                    Cycle Edge
+                </span>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Bicycle Commission System | Nairobi, Kenya
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Commission tiers structure for Kenyan Shillings (KSh)
+        const commissionTiers = [
+            { min: 10000, max: 49999, rate: 5 },
+            { min: 50000, max: 99999, rate: 7 },
+            { min: 100000, max: 149999, rate: 10 },
+            { min: 150000, max: 200000, rate: 12 }
+        ];
+        
+        // DOM elements
+        const salePriceInput = document.getElementById('sale-price');
+        const calculateBtn = document.getElementById('calculate-btn');
+        const clearBtn = document.getElementById('clear-btn');
+        const resultsDiv = document.getElementById('results');
+        const bikePriceEl = document.getElementById('bike-price');
+        const commissionRateEl = document.getElementById('commission-rate');
+        const affiliateEarningsEl = document.getElementById('affiliate-earnings');
+        
+        // Format currency for KSh
+        function formatCurrency(amount) {
+            return 'KSh ' + amount.toLocaleString('en-KE', { 
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2 
+            });
+        }
+        
+        // Function to calculate commission based on sale price
+        function calculateCommission() {
+            // Get and validate sale price
+            const salePrice = parseFloat(salePriceInput.value);
+            
+            if (isNaN(salePrice)) {
+                alert('Please enter a valid sale price.');
+                return;
+            }
+            
+            if (salePrice < 10000 || salePrice > 200000) {
+                alert('Sale price must be between KSh 10,000 and KSh 200,000.');
+                return;
+            }
+            
+            // Find the applicable commission rate
+            let commissionRate = 0;
+            for (const tier of commissionTiers) {
+                if (salePrice >= tier.min && salePrice <= tier.max) {
+                    commissionRate = tier.rate;
+                    break;
+                }
+            }
+            
+            // Calculate commission amount (affiliate earnings)
+            const affiliateEarnings = (salePrice * commissionRate) / 100;
+            
+            // Display results
+            bikePriceEl.textContent = formatCurrency(salePrice);
+            commissionRateEl.textContent = `${commissionRate}%`;
+            affiliateEarningsEl.textContent = formatCurrency(affiliateEarnings);
+            
+            // Show results with animation
+            resultsDiv.classList.add('show');
+            
+            // Add animation effect to the earnings card
+            affiliateEarningsEl.parentElement.parentElement.animate([
+                { transform: 'scale(1)' },
+                { transform: 'scale(1.1)', offset: 0.5 },
+                { transform: 'scale(1)' }
+            ], {
+                duration: 600,
+                easing: 'ease-in-out'
+            });
+        }
+        
+        // Clear form function
+        function clearForm() {
+            salePriceInput.value = '';
+            resultsDiv.classList.remove('show');
+            salePriceInput.focus();
+        }
+        
+        // Event listeners
+        calculateBtn.addEventListener('click', calculateCommission);
+        clearBtn.addEventListener('click', clearForm);
+        
+        // Allow Enter key to trigger calculation
+        salePriceInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                calculateCommission();
+            }
+        });
+        
+        // Initialize with an example value for demonstration
+        window.addEventListener('load', function() {
+            salePriceInput.value = '125000';
+            // Trigger calculation after a short delay for demo purposes
+            setTimeout(calculateCommission, 800);
+        });
+    </script>
+</body>
+</html>

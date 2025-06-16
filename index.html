@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CycleEdge - Bike Marketing Training</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+     
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4ade80;
+            --gradient: linear-gradient(135deg, #4361ee, #4cc9f0);
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .dark-mode {
+            --light: #121826;
+            --dark: #f8f9fa;
+            --card-bg: rgba(18, 24, 38, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+            transition: background 0.4s ease;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .dark-mode header.scrolled {
+            background: rgba(18, 24, 38, 0.9);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .dark-mode .nav-links a {
+            color: var(--light);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        .dark-mode .mobile-toggle {
+            color: var(--light);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: url('https://videoaf.cgtn.com/news/2020-12-15/Kenya-Cycling-running-gain-popularity-amid-the-pandemic-We3L5DE3K0/video/b0b0afea6c3c4aed95438ab13dcd7233/b0b0afea6c3c4aed95438ab13dcd7233.jpg') no-repeat center center/cover;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+        }
+
+        .typing-text {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .btn:hover::after {
+            transform: translateX(0);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Cards */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .dark-mode .card {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(67, 97, 238, 0.15);
+        }
+
+        .card-icon {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient);
+            font-size: 4rem;
+            color: white;
+        }
+
+        .card-content {
+            padding: 30px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .dark-mode .card p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Accordion */
+        .accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .accordion-item {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .accordion-header {
+            padding: 20px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .accordion-header i {
+            transition: var(--transition);
+        }
+
+        .accordion-content {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .accordion-content-inner {
+            padding: 0 0 30px;
+        }
+
+        .accordion-item.active .accordion-header i {
+            transform: rotate(180deg);
+        }
+
+        /* Stats */
+        .stats {
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Testimonials */
+        .testimonials-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 30px;
+            padding: 20px 0;
+            scrollbar-width: none;
+        }
+
+        .testimonials-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .testimonial {
+            min-width: 300px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .testimonial {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .testimonial-content::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: -20px;
+            left: -15px;
+            opacity: 0.1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            padding: 80px 0 30px;
+        }
+
+        .dark-mode footer {
+            background: #0d1117;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a i {
+            margin-right: 10px;
+            font-size: 0.8rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--gradient);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-5px) rotate(30deg);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                flex-direction: column;
+                background: var(--light);
+                width: 80%;
+                height: calc(100vh - 80px);
+                padding: 50px 30px;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .dark-mode .nav-links {
+                background: var(--dark);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .card-icon {
+                height: 150px;
+                font-size: 3rem;
+            }
+        }
+    </style>
+     <style>
+    .logo-wrapper {
+      padding: 10px;
+    }
+
+    .favicon-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .favicon-icon:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+    <div class="logo-wrapper">
+    <a href="https://spencemiles.github.io/Cycledge/">
+      <img src="https://iili.io/FfokKPI.png" alt="Cycledge Logo" class="favicon-icon" />
+    </a>
+  </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-bicycle"></i>
+                CycleEdge
+            </a>
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#overview">System Overview</a>
+                <a href="#market">Target Market</a>
+                <a href="#selling">Selling Tips</a>
+                <a href="#marketing">Online Marketing</a>
+                <a href="#algorithms">Algorithms</a>
+                <a href="#photography">Photography & Captions</a>
+                <a href="#income">Income Growth</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content" data-aos="fade-up">
+            <h1>Transform Your Marketing Skills with <span class="typing-text"></span></h1>
+            <p>Join Kenya's most comprehensive bike marketing training program. Learn to sell effectively, maximize your commissions, and build a sustainable income stream in the cycling industry.</p>
+            <a href="#overview" class="btn">Start Training Now</a>
+            
+        </div>
+    </section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collapsible Affiliate Leaderboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+       
+
+        /* Collapsed state */
+        .aff-leaderboard-collapsed {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4b6cb7, #182848);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            z-index: 10000;
+            transition: all 0.3s ease;
+        }
+
+        .aff-leaderboard-collapsed:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .aff-leaderboard-collapsed .aff-icon {
+            font-size: 28px;
+            color: #FFD700;
+            animation: aff-icon-pulse 2s infinite;
+        }
+
+        @keyframes aff-icon-pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .aff-leaderboard-collapsed .aff-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff6b6b;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            animation: aff-pulse 1.5s infinite;
+        }
+
+        @keyframes aff-pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        /* Expanded state */
+        .aff-leaderboard-expanded {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 380px;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            z-index: 10000;
+            animation: aff-expand 0.6s forwards;
+        }
+
+        @keyframes aff-expand {
+            0% { 
+                transform: scale(0.2);
+                opacity: 0;
+                border-radius: 50%;
+                top: 30px;
+                right: 30px;
+                width: 60px;
+                height: 60px;
+            }
+            70% {
+                transform: scale(1.05);
+                opacity: 1;
+                border-radius: 15px;
+                top: 20px;
+                right: 20px;
+                width: 380px;
+                height: auto;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .aff-header {
+            background: linear-gradient(90deg, #4b6cb7, #182848);
+            color: white;
+            padding: 25px 20px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .aff-header h2 {
+            font-size: 26px;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .aff-header p {
+            opacity: 0.85;
+            font-size: 14px;
+        }
+
+        .aff-close-btn {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .aff-close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .aff-leaderboard {
+            padding: 20px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .aff-item {
+            display: flex;
+            align-items: center;
+            padding: 18px 15px;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            position: relative;
+        }
+
+        .aff-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        }
+
+        .aff-rank {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #e9ecef;
+            font-weight: bold;
+            font-size: 17px;
+            margin-right: 18px;
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+
+        .aff-rank-1 {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: white;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .aff-rank-2 {
+            background: linear-gradient(135deg, #C0C0C0, #A9A9A9);
+            color: white;
+        }
+
+        .aff-rank-3 {
+            background: linear-gradient(135deg, #CD7F32, #8B4513);
+            color: white;
+        }
+
+        .aff-info {
+            flex-grow: 1;
+        }
+
+        .aff-name {
+            font-weight: 700;
+            color: #343a40;
+            margin-bottom: 6px;
+            font-size: 16px;
+        }
+
+        .aff-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .aff-sales {
+            font-weight: 700;
+            color: #4b6cb7;
+        }
+
+        .aff-commission {
+            font-weight: 700;
+            color: #28a745;
+        }
+
+        .aff-progress-bar {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .aff-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #4b6cb7, #182848);
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+
+        .aff-crown {
+            position: absolute;
+            top: -8px;
+            left: 30px;
+            color: #FFD700;
+            font-size: 24px;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            animation: aff-crown-spin 4s infinite linear;
+        }
+
+        @keyframes aff-crown-spin {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(10deg); }
+            75% { transform: rotate(-10deg); }
+        }
+
+        .aff-refresh-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(90deg, #4b6cb7, #182848);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+            font-size: 15px;
+        }
+
+        .aff-refresh-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(75, 108, 183, 0.4);
+        }
+
+        .aff-refresh-btn:active {
+            transform: translateY(0);
+        }
+
+        .aff-footer {
+            padding: 16px 20px;
+            background: #f8f9fa;
+            text-align: center;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .aff-footer a {
+            color: #4b6cb7;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .aff-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Collapsed state (default) -->
+    <div class="aff-leaderboard-collapsed" id="affCollapsed">
+        <i class="fas fa-trophy aff-icon"></i>
+        <div class="aff-badge">10</div>
+    </div>
+
+    <!-- Expanded state (hidden by default) -->
+    <section class="aff-leaderboard-expanded" id="affExpanded" style="display: none;">
+        <div class="aff-header">
+            <button class="aff-close-btn" id="affCloseBtn">&times;</button>
+            <h2>Top Affiliate Sellers</h2>
+            <p>June 2024 Performance Leaderboard</p>
+        </div>
+        
+        <div class="aff-leaderboard" id="affLeaderboard">
+            <!-- Affiliate items will be populated by JavaScript -->
+        </div>
+        
+        <button class="aff-refresh-btn" id="affRefreshBtn">
+            <i class="fas fa-sync-alt"></i> Refresh Leaderboard
+        </button>
+        
+        <div class="aff-footer">
+            <p>Updated daily • <a href="#">View full leaderboard</a></p>
+        </div>
+    </section>
+
+    <script>
+        // Sample data for top 10 affiliate sellers
+        const affSellers = [
+            { name: "Alex Johnson", sales: 1428, commission: 4284, progress: 100 },
+            { name: "Sarah Williams", sales: 1320, commission: 3960, progress: 92 },
+            { name: "Michael Chen", sales: 1215, commission: 3645, progress: 85 },
+            { name: "Emma Rodriguez", sales: 1089, commission: 3267, progress: 76 },
+            { name: "David Kim", sales: 975, commission: 2925, progress: 68 },
+            { name: "Olivia Martinez", sales: 842, commission: 2526, progress: 59 },
+            { name: "James Wilson", sales: 765, commission: 2295, progress: 54 },
+            { name: "Sophia Brown", sales: 689, commission: 2067, progress: 48 },
+            { name: "Benjamin Taylor", sales: 598, commission: 1794, progress: 42 },
+            { name: "Isabella Davis", sales: 512, commission: 1536, progress: 36 }
+        ];
+
+        const affCollapsed = document.getElementById('affCollapsed');
+        const affExpanded = document.getElementById('affExpanded');
+        const affLeaderboard = document.getElementById('affLeaderboard');
+        const affRefreshBtn = document.getElementById('affRefreshBtn');
+        const affCloseBtn = document.getElementById('affCloseBtn');
+
+        // Function to create leaderboard items
+        function createAffLeaderboard() {
+            affLeaderboard.innerHTML = '';
+            
+            affSellers.forEach((seller, index) => {
+                const item = document.createElement('div');
+                item.className = 'aff-item';
+                item.style.animationDelay = `${index * 0.1}s`;
+                
+                // Add crown to top seller
+                const crown = index === 0 ? '<div class="aff-crown"><i class="fas fa-crown"></i></div>' : '';
+                
+                item.innerHTML = `
+                    ${crown}
+                    <div class="aff-rank ${index < 3 ? 'aff-rank-' + (index + 1) : ''}">${index + 1}</div>
+                    <div class="aff-info">
+                        <div class="aff-name">${seller.name}</div>
+                        <div class="aff-stats">
+                            <span>Sales: <span class="aff-sales">${seller.sales.toLocaleString()}</span></span>
+                            <span>Commission: $<span class="aff-commission">${seller.commission.toLocaleString()}</span></span>
+                        </div>
+                        <div class="aff-progress-bar">
+                            <div class="aff-progress" style="width: ${seller.progress}%"></div>
+                        </div>
+                    </div>
+                `;
+                
+                affLeaderboard.appendChild(item);
+                
+                // Animate item entrance
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                    
+                    // Animate progress bar
+                    const progressBar = item.querySelector('.aff-progress');
+                    progressBar.style.width = seller.progress + '%';
+                }, 500 + (index * 100));
+            });
+        }
+        
+        // Toggle between collapsed and expanded states
+        affCollapsed.addEventListener('click', function() {
+            this.style.display = 'none';
+            affExpanded.style.display = 'block';
+            createAffLeaderboard();
+        });
+        
+        affCloseBtn.addEventListener('click', function() {
+            affExpanded.style.display = 'none';
+            affCollapsed.style.display = 'flex';
+        });
+        
+        // Initialize leaderboard on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            // Create the leaderboard but don't show it yet
+            createAffLeaderboard();
+        });
+        
+        // Refresh button functionality
+        affRefreshBtn.addEventListener('click', function() {
+            // Add animation effect to button
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
+            
+            // Simulate loading new data
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Leaderboard';
+                createAffLeaderboard();
+                
+                // Add a notification effect
+                const notification = document.createElement('div');
+                notification.textContent = 'Leaderboard updated!';
+                notification.style.position = 'fixed';
+                notification.style.top = '70px';
+                notification.style.right = '30px';
+                notification.style.background = '#28a745';
+                notification.style.color = 'white';
+                notification.style.padding = '10px 20px';
+                notification.style.borderRadius = '5px';
+                notification.style.boxShadow = '0 3px 10px rgba(0,0,0,0.2)';
+                notification.style.zIndex = '10001';
+                notification.style.fontWeight = '600';
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    notification.style.transform = 'translateY(-20px)';
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 500);
+                }, 2000);
+            }, 1500);
+        });
+    </script>
+    <!-- System Overview -->
+    <section id="overview">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>System Overview</h2>
+                <p>Understand how our commission-based system works and how you can maximize your earnings</p>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Commission-Based Earnings</h3>
+                        <p>Earn KSH 2,000 - 5,000 per bike sold. Premium models offer higher commissions.</p>
+                        <p>Sell 10 bikes per month = potential earnings of <strong>KSH 20,000 – 50,000</strong>.</p>
+                        <a href="commissioncalculator.html" class="blue-btn">Do a calculation </a>
+                        <style>
+                            .blue-btn {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #007BFF;
+  color: white;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+}
+
+.blue-btn:hover {
+  transform: scale(1.1);
+  background-color: #0056b3;
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+}
+
+.blue-btn:active {
+  transform: scale(0.98);
+}
+
+                        </style>
+                    </div>
+                </div>
+                
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon">
+                        <i class="fas fa-bicycle"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Product Knowledge</h3>
+                        <p>Master bike specifications including category, gear system, size, delivery options, and pricing.</p>
+                        <p>You'll receive detailed product sheets and landing pages for each model.</p>
+                    </div>
+                </div>
+                
+                <div class="card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Performance Tracking</h3>
+                        <p>Track your sales, commissions, and performance metrics through our dashboard.</p>
+                        <p>Identify your best-selling models and optimize your strategy accordingly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Market -->
+    <section id="market" style="background: rgba(67, 97, 238, 0.03);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Understanding Your Target Market</h2>
+                <p>Learn where to find your ideal customers and how to identify potential buyers</p>
+            </div>
+            
+           <div class="cards-container">
+    <!-- Existing Card 1 -->
+    <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-content">
+            <h3><i class="fas fa-users"></i> Where Are the Customers?</h3>
+            <ul style="padding-left: 20px; margin-top: 15px;">
+                <li>Cycling clubs</li>
+                <li>Fitness groups and gyms</li>
+                <li>University/college students</li>
+                <li>Young professionals</li>
+                <li>Delivery riders</li>
+                <li>Outdoor enthusiasts</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Existing Card 2 -->
+    <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <div class="card-content">
+            <h3><i class="fas fa-search"></i> Spotting Potential Buyers</h3>
+            <ul style="padding-left: 20px; margin-top: 15px;">
+                <li>Likes or shares bike-related posts</li>
+                <li>Comments on outdoor or fitness content</li>
+                <li>Follows cycling or gym accounts</li>
+                <li>Responds positively to your posts</li>
+                <li>Engages with fitness communities</li>
+                <li>Seeks affordable transport solutions</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- New Card 3 -->
+    <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <div class="card-content">
+            <h3><i class="fas fa-bullhorn"></i> Effective Conversion Strategies</h3>
+            <ul style="padding-left: 20px; margin-top: 15px;">
+                <li>Offer limited-time group discounts</li>
+                <li>Create referral incentive programs</li>
+                <li>Share user-generated content/testimonials</li>
+                <li>Highlight cost vs. public transport savings</li>
+                <li>Demonstrate eco-friendly benefits</li>
+                <li>Provide flexible payment options</li>
+            </ul>
+        </div>
+    </div>
+</div>
+            
+            <div class="accordion" style="margin-top: 50px;" data-aos="fade-up">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>How to Engage with Cycling Clubs</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Partner with local cycling clubs for demo days and group rides. Offer club discounts and sponsor events to build relationships with passionate cyclists who can become brand advocates.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Targeting University Students</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Set up campus booths during orientation weeks. Emphasize the cost-saving benefits compared to public transport. Offer student discounts and flexible payment plans to make bikes more accessible.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Reaching Delivery Riders</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Focus on durability and low maintenance costs. Highlight how our bikes are designed for daily commercial use with reinforced frames and all-weather components. Offer special commercial rider packages.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Selling Tips -->
+    <section id="selling">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Selling Tips</h2>
+                <p>Master the art of persuasive selling and communicate the true value of our bikes</p>
+            </div>
+            
+           <div class="cards-container">
+    <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-icon">
+            <i class="fas fa-bullhorn"></i>
+        </div>
+        <div class="card-content">
+            <h3>Explaining the Benefits</h3>
+            <p><strong>Affordable Transport:</strong> Cost-effective alternative to motorbikes and taxis</p>
+            <p><strong>Health & Fitness:</strong> Improve cardiovascular health without gym fees</p>
+            <p><strong>Adventure Ready:</strong> Perfect for weekend rides at Karura Forest or Ngong Hills</p>
+        </div>
+    </div>
+    
+    <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <div class="card-icon">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="card-content">
+            <h3>Persuasive Language</h3>
+            <p>"Imagine gliding through Nairobi traffic like it's nothing — Hakuna jam kwako!"</p>
+            <p>"Join Kenya's fastest-growing squad of riders turning heads everywhere."</p>
+            <p>"Yours today, ride tomorrow — trust me, once you start, you won't want to stop."</p>
+        </div>
+    </div>
+
+    <!-- New Third Card -->
+    <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <div class="card-icon">
+            <i class="fas fa-hand-holding-usd"></i>
+        </div>
+        <div class="card-content">
+            <h3>Overcoming Objections</h3>
+            <p><strong>"It's too expensive":</strong> "Less than 3 months of matatu fares pays for itself!"</p>
+            <p><strong>"I'll look funny":</strong> "Be the trendsetter - everyone will ask where you got yours"</p>
+            <p><strong>"Maintenance worries":</strong> "Free first service + easy YouTube tutorials for everything"</p>
+        </div>
+    </div>
+</div>
+            
+            <div style="text-align: center; margin-top: 50px;" data-aos="fade-up">
+                <div style="max-width: 800px; margin: 0 auto; padding: 30px; background: var(--gradient); border-radius: 20px; color: white;">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 20px;">Psychology Behind Persuasive Selling</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: left;">
+                        <div>
+                            <h4><i class="fas fa-eye"></i> Visualization</h4>
+                            <p>Help customers imagine the experience: "Feel the breeze as you ride..."</p>
+                        </div>
+                        <div>
+                            <h4><i class="fas fa-users"></i> Social Proof</h4>
+                            <p>"Join Kenya's fastest-growing community of riders"</p>
+                        </div>
+                        <div>
+                            <h4><i class="fas fa-bolt"></i> Urgency</h4>
+                            <p>"Bikes are selling fast, don't miss out"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-item" data-aos="fade-up">
+                    <h3>2K-10K</h3>
+                    <p>Commission Per Bike</p>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                    <h3>20K-50K</h3>
+                    <p>Monthly Potential</p>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                    <h3>0 KES</h3>
+                    <p>Marketing Budget Needed</p>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                    <h3>100%</h3>
+                    <p>Commission Focused</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Online Marketing -->
+    <section id="marketing" style="background: rgba(67, 97, 238, 0.03);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Zero-Budget Online Marketing</h2>
+                <p>Learn to leverage social media platforms without spending on ads</p>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon" style="background: #25D366;">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <a href="whatsappmarketer.html" style="text-decoration: none;">
+                    <div class="card-content">
+                        <h3>WhatsApp Marketing</h3>
+                        <p>Use Status Updates with clear photos and prices</p>
+                        <p>Message contacts individually and ask for referrals</p>
+                        <p>Share in buy/sell, cycling, and fitness groups</p>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon" style="background: #000;">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <a href="tiktokmarketing.html" style="text-decoration: none;">
+                    <div class="card-content">
+                        <h3>TikTok Strategy</h3>
+                        <p>Post videos riding or showcasing bikes</p>
+                        <p>Use trending sounds and hashtags</p>
+                        <p>Duet and stitch trending videos</p>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <a href="IGmarketing.html" style="text-decoration: none;">
+                    <div class="card-content">
+                        <h3>Instagram Tactics</h3>
+                        <p>Use Reels to show features and lifestyle</p>
+                        <p>Post behind-the-scenes content</p>
+                        <p>Go live during unboxing or delivery</p>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-icon" style="background: #1877F2;">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Facebook Approach</h3>
+                        <p>Post in groups like "Nairobi Buy and Sell"</p>
+                        <p>Use Facebook Marketplace listings</p>
+                        <p>Create relatable captions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photography & Captions -->
+    <section id="photography">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Photography & Captions</h2>
+                <p>Create compelling visual content that drives engagement and sales</p>
+            </div>
+            
+            <div class="cards-container">
+    <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-content">
+            <h3><i class="fas fa-camera"></i> Perfect Picture Tips</h3>
+            <p>1. Use natural lighting (morning or evening)</p>
+            <p>2. Stand confidently beside the bike</p>
+            <p>3. Smile and show excitement</p>
+            <p>4. Wear sporty or casual clothes</p>
+            <p>5. Show bike details clearly</p>
+        </div>
+    </div>
+    
+    <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <div class="card-content">
+            <h3><i class="fas fa-pen"></i> Captions That Convert</h3>
+            <p>"Who's ready to level up their weekend rides?"</p>
+            <p>"This baby just arrived—tag someone who needs it!"</p>
+            <p>"Affordable. Durable. Delivered."</p>
+            <p>"Achana na matatu traffic, shujaa kwenye baiskeli!"</p>
+        </div>
+    </div>
+
+    <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <div class="card-content">
+            <h3><i class="fas fa-bolt"></i> Boost Your Reach</h3>
+            <p>1. Post during lunch & evening hours</p>
+            <p>2. Use local hashtags: #NairobiBikes #BikeLifestyle</p>
+            <p>3. Engage quickly with comments</p>
+            <p>4. Tag your location to increase visibility</p>
+        </div>
+    </div>
+
+    <div class="card" data-aos="fade-up" data-aos-delay="400">
+        <div class="card-content">
+            <h3><i class="fas fa-user-friends"></i> Encourage Sharing</h3>
+            <p>1. Offer small discounts for tags/shares</p>
+            <p>2. Use phrases like “Tag a friend who needs this”</p>
+            <p>3. Mention “Limited stock available!”</p>
+        </div>
+    </div>
+
+    <div class="card" data-aos="fade-up" data-aos-delay="500">
+        <div class="card-content">
+            <h3><i class="fas fa-star"></i> Feature Happy Buyers</h3>
+            <p>1. Ask buyers for testimonials</p>
+            <p>2. Repost their bike photos</p>
+            <p>3. Thank them publicly with a story or post</p>
+            <p>4. Add a sticker: "Sold via [Marketer’s Name]"</p>
+        </div>
+    </div>
+
+    <div class="card" data-aos="fade-up" data-aos-delay="600">
+        <div class="card-content">
+            <h3><i class="fas fa-chart-line"></i> Promote Smartly</h3>
+            <p>1. Boost best-performing posts</p>
+            <p>2. Invest in short video reels (10–30s)</p>
+            <p>3. Collaborate with micro-influencers</p>
+            <p>4. Use call-to-action like “DM to Buy”</p>
+        </div>
+    </div>
+</div>
+
+            
+            <div style="margin-top: 50px;">
+                <h3 style="text-align: center; margin-bottom: 30px;" data-aos="fade-up">Psychology Behind Effective Captions</h3>
+                <div class="cards-container">
+                    <div class="card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-content">
+                            <h4><i class="fas fa-bullseye"></i> Call to Action</h4>
+                            <p>Encourage participation with phrases like "Tag someone who needs it!"</p>
+                        </div>
+                    </div>
+                    <div class="card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card-content">
+                            <h4><i class="fas fa-eye"></i> Curiosity & FOMO</h4>
+                            <p>Create urgency: "Limited stock. Reserve yours now!"</p>
+                        </div>
+                    </div>
+                    <div class="card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card-content">
+                            <h4><i class="fas fa-heart"></i> Positive Identity</h4>
+                            <p>Make people imagine themselves as part of a group: "Who's ready to explore?"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Income Growth -->
+    <section id="income" style="background: rgba(67, 97, 238, 0.03);">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Income Growth Strategies</h2>
+            <p>Maximize your earnings potential with these proven techniques</p>
+        </div>
+
+        <div class="cards-container">
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-content">
+                    <h3><i class="fas fa-calculator"></i> Basic Math</h3>
+                    <p>1 bike = KSH 2,000–5,000 commission</p>
+                    <p>10 bikes/month = KSH 20,000–50,000</p>
+                    <p>Refer friends to join and earn bonuses</p>
+                    <p>Premium models = higher commissions</p>
+                </div>
+                <a href="commissioncalculator.html" class="blue-btn">Do a calculation</a>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-content">
+                    <h3><i class="fas fa-chart-line"></i> Tips to Sell More</h3>
+                    <p>Post daily on all platforms</p>
+                    <p>Reply to DMs within 15 minutes</p>
+                    <p>Follow up with interested leads</p>
+                    <p>Offer bundle discounts (helmet, pump)</p>
+                    <p>Ask for referrals after every sale</p>
+                </div>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-content">
+                    <h3><i class="fas fa-users"></i> Build a Personal Brand</h3>
+                    <p>Use your name/logo in every post</p>
+                    <p>Create a consistent look and tone</p>
+                    <p>Be authentic and helpful—not pushy</p>
+                    <p>Post stories of your customer’s experience</p>
+                </div>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="400">
+                <div class="card-content">
+                    <h3><i class="fas fa-bullhorn"></i> Run Promotions</h3>
+                    <p>Run “First 5 Buyers” discounts</p>
+                    <p>Use countdown timers for urgency</p>
+                    <p>Bundle bikes with services (tune-up, reflectors)</p>
+                    <p>Promote limited edition bikes weekly</p>
+                </div>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="500">
+                <div class="card-content">
+                    <h3><i class="fas fa-handshake"></i> Partner With Micro-Influencers</h3>
+                    <p>Find people with 2k–10k followers</p>
+                    <p>Offer a free ride or commission</p>
+                    <p>Let them promote your bikes via stories</p>
+                    <p>Ask for a tag or mention in testimonials</p>
+                </div>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="600">
+                <div class="card-content">
+                    <h3><i class="fas fa-bicycle"></i> Know Your Product</h3>
+                    <p>Study specs and pricing for each model</p>
+                    <p>Be ready to explain benefits (e.g., “good for hills”)</p>
+                    <p>Compare bikes when chatting with buyers</p>
+                    <p>Know which models move faster in your area</p>
+                </div>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="700">
+                <div class="card-content">
+                    <h3><i class="fas fa-clock"></i> Time Your Posts</h3>
+                    <p>Post between 6–8am, 12–2pm, 5–7pm</p>
+                    <p>Use trending sounds in reels</p>
+                    <p>Post in active local Facebook groups</p>
+                    <p>Repost top-performing content monthly</p>
+                </div>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="800">
+                <div class="card-content">
+                    <h3><i class="fas fa-file-invoice-dollar"></i> Track Your Earnings</h3>
+                    <p>Keep a notebook or spreadsheet</p>
+                    <p>Record each sale, date, commission</p>
+                    <p>Track which platforms give most leads</p>
+                    <p>Review monthly to improve strategy</p>
+                </div>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="900">
+                <div class="card-content">
+                    <h3><i class="fas fa-comments"></i> Build Customer Relationships</h3>
+                    <p>Send thank-you notes after a sale</p>
+                    <p>Check in after 1 week to see how the bike is</p>
+                    <p>Ask them to post and tag your page</p>
+                    <p>Offer a small gift on repeat purchases</p>
+                </div>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="1000">
+                <div class="card-content">
+                    <h3><i class="fas fa-network-wired"></i> Expand Your Network</h3>
+                    <p>Join local cycling and fitness groups</p>
+                    <p>Attend events with your branded shirt</p>
+                    <p>Offer to do group discounts</p>
+                    <p>Give out business cards or stickers</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;" data-aos="fade-up">
+            <div style="max-width: 800px; margin: 0 auto; padding: 30px; background: var(--gradient); border-radius: 20px; color: white;">
+                <h3 style="font-size: 2rem; margin-bottom: 20px;">Final Advice</h3>
+                <p style="font-size: 1.2rem;">"You're not just selling a bike; you're selling freedom, lifestyle, and health."</p>
+                <p style="margin-top: 20px;">Stay motivated and consistent. You can grow your income, your influence, and even your career from here. Don't forget to ask for referrals after every sale!</p>
+                <a href="joinform.html" class="btn" style="margin-top: 30px; background: white; color: var(--primary);">Join Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>CycleEdge</h3>
+                    <p>Empowering bike marketers across Kenya with cutting-edge training and resources to maximize earnings and career growth.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#overview"><i class="fas fa-chevron-right"></i> System Overview</a></li>
+                        <li><a href="#market"><i class="fas fa-chevron-right"></i> Target Market</a></li>
+                        <li><a href="#selling"><i class="fas fa-chevron-right"></i> Selling Tips</a></li>
+                        <li><a href="#marketing"><i class="fas fa-chevron-right"></i> Online Marketing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Product Catalog</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Sales Scripts</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Marketing Templates</a></li>
+                        <li><a href="commissioncalculator.html"><i class="fas fa-chevron-right"></i> Commission Calculator</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Training Videos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> +254 790 61 7211</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> spencemiles0@gmail.com</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9AM - 5PM</a></li>
+                        <li><a href="#"><i class="fas fa-users"></i> Weekly Meetings</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 CycleEdge. All rights reserved. Empowering Kenyan Bike Marketers</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 120
+        });
+
+        // Typing Effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const typed = new Typed('.typing-text', {
+                strings: ['CycleEdge', 'Smart Strategies', 'Higher Earnings', 'Kenyan Markets'],
+                typeSpeed: 70,
+                backSpeed: 50,
+                loop: true
+            });
+
+            // Theme Toggle
+            const themeToggle = document.querySelector('.theme-toggle');
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                const icon = themeToggle.querySelector('i');
+                if (document.body.classList.contains('dark-mode')) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
+            });
+
+            // Mobile Menu Toggle
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Sticky Header
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                header.classList.toggle('scrolled', window.scrollY > 50);
+            });
+
+            // Accordion Functionality
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionItem = header.parentElement;
+                    accordionItem.classList.toggle('active');
+                    
+                    const content = accordionItem.querySelector('.accordion-content');
+                    if (accordionItem.classList.contains('active')) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    } else {
+                        content.style.maxHeight = null;
+                    }
+                });
+            });
+
+            // Smooth Scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

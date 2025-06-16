@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View details of our premium mountain bike - specifications, features, reviews and more.">
+    <title>TrailMaster Pro | PedalPower</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== Product Detail Styles ===== */
+.product-detail {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+}
+
+.breadcrumb {
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.breadcrumb a {
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+    color: #ff6b6b;
+}
+
+.breadcrumb span {
+    color: #333;
+    font-weight: 500;
+}
+
+.product-detail-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.product-gallery {
+    position: relative;
+}
+
+.main-image {
+    position: relative;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    height: 500px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    cursor: zoom-in;
+}
+
+.zoom-result {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    margin-left: 20px;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    display: none;
+    z-index: 100;
+}
+
+.thumbnail-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.thumbnail {
+    border: 1px solid #eee;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    height: 80px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thumbnail.active {
+    border-color: #ff6b6b;
+}
+
+.thumbnail img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.product-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.rating {
+    color: #ffc107;
+    display: flex;
+    align-items: center;
+}
+
+.rating span {
+    color: #666;
+    font-size: 0.9rem;
+    margin-left: 5px;
+}
+
+.sku, .availability {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.availability {
+    color: #4CAF50;
+    font-weight: 500;
+}
+
+.price-box {
+    margin-bottom: 25px;
+}
+
+.current-price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ff6b6b;
+}
+
+.old-price {
+    font-size: 1.2rem;
+    color: #999;
+    text-decoration: line-through;
+    margin-left: 10px;
+}
+
+.discount {
+    display: inline-block;
+    background: #ff6b6b;
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    margin-left: 10px;
+}
+
+.product-description {
+    margin-bottom: 25px;
+    color: #666;
+    line-height: 1.7;
+}
+
+.product-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.quantity button {
+    width: 40px;
+    height: 40px;
+    background: #f5f5f5;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #333;
+}
+
+.quantity input {
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    border: none;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+.add-to-cart {
+    background: #ff6b6b;
+    color: #fff;
+    flex: 1;
+}
+
+.buy-now {
+    background: #333;
+    color: #fff;
+    flex: 1;
+}
+
+.product-share {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 15px;
+}
+
+.product-share span {
+    font-weight: 500;
+    color: #333;
+}
+
+.product-share a {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.product-share a:hover {
+    transform: translateY(-3px);
+}
+
+.share-facebook {
+    background: #3b5998;
+}
+
+.share-twitter {
+    background: #1da1f2;
+}
+
+.share-pinterest {
+    background: #e60023;
+}
+
+.share-whatsapp {
+    background: #25D366;
+}
+
+.product-extra-info {
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+}
+
+.info-tabs {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    color: #ff6b6b;
+    border-bottom-color: #ff6b6b;
+}
+
+.tab-content {
+    display: none;
+    padding: 15px 0;
+    color: #666;
+    line-height: 1.7;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.tab-content ul {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+.tab-content ul li {
+    margin-bottom: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+table th {
+    color: #333;
+    font-weight: 500;
+    width: 30%;
+}
+
+.review-summary {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.average-rating {
+    text-align: center;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    min-width: 150px;
+}
+
+.avg-rating-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.avg-rating-stars {
+    color: #ffc107;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.total-reviews {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.rating-bars {
+    flex: 1;
+}
+
+.rating-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.rating-bar span:first-child {
+    width: 70px;
+    color: #666;
+}
+
+.bar-container {
+    flex: 1;
+    height: 10px;
+    background: #eee;
+    border-radius: 5px;
+    margin: 0 10px;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    background: #ffc107;
+    border-radius: 5px;
+}
+
+.rating-bar span:last-child {
+    width: 30px;
+    text-align: right;
+    color: #666;
+}
+
+.review-form {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.review-form h4 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+}
+
+.rating-input {
+    display: flex;
+    direction: rtl;
+}
+
+.rating-input input {
+    display: none;
+}
+
+.rating-input label {
+    color: #ddd;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.rating-input input:checked ~ label,
+.rating-input input:hover ~ label {
+    color: #ffc107;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.customer-reviews {
+    margin-top: 40px;
+}
+
+.review {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.review:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.review-author {
+    font-weight: 500;
+    color: #333;
+}
+
+.review-rating {
+    color: #ffc107;
+}
+
+.review-date {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.review-title {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.review-text {
+    color: #666;
+    line-height: 1.6;
+}
+
+.related-products {
+    margin-top: 60px;
+}
+
+.related-products h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #333;
+    position: relative;
+}
+
+.related-products h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: #ff6b6b;
+    margin: 15px auto 0;
+}
+
+.related-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+/* ===== Responsive Styles ===== */
+@media (max-width: 992px) {
+    .product-detail-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .main-image {
+        height: 400px;
+    }
+    
+    .zoom-result {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-title {
+        font-size: 1.8rem;
+    }
+    
+    .current-price {
+        font-size: 1.5rem;
+    }
+    
+    .old-price {
+        font-size: 1rem;
+    }
+    
+    .review-summary {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .rating-bars {
+        width: 100%;
+    }
+    
+    .product-actions {
+        flex-direction: column;
+    }
+    
+    .quantity {
+        width: 100%;
+    }
+    
+    .add-to-cart, .buy-now {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-image {
+        height: 300px;
+    }
+    
+    .thumbnail-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .info-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .tab-btn {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .review-form {
+        padding: 20px;
+    }
+}
+    </style>
+    <link rel="icon" href="images/favicon.png" type="image/png">
+</head>
+<body>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/+254712345678" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <p>Free shipping on orders over $50</p>
+                <div class="top-links">
+                    <a href="affiliate.html">Become an Affiliate</a>
+                    <a href="#contact">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="index.html">Pedal<span>Power</span></a>
+                </div>
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Bikes</a></li>
+                        <li><a href="products.html?category=accessories">Accessories</a></li>
+                        <li><a href="#deals">Top Deals</a></li>
+                        <li><a href="affiliate.html">Affiliate Program</a></li>
+                    </ul>
+                </nav>
+                <div class="nav-icons">
+                    <a href="#" id="search-btn"><i class="fas fa-search"></i></a>
+                    <a href="cart.html"><i class="fas fa-shopping-cart"><span class="cart-count">0</span></i></a>
+                    <div class="menu-btn">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Form -->
+    <div class="search-form-container">
+        <div class="container">
+            <form id="search-form">
+                <input type="search" placeholder="Search for bikes, accessories..." id="search-box">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+            <div id="search-results"></div>
+            <span class="close-search"><i class="fas fa-times"></i></span>
+        </div>
+    </div>
+
+    <!-- Product Detail Section -->
+    <section class="product-detail">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / 
+                <a href="products.html">Bikes</a> / 
+                <a href="products.html?category=mountain">Mountain Bikes</a> / 
+                <span>TrailMaster Pro</span>
+            </div>
+            
+            <div class="product-detail-container">
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img src="images/bike1.jpg" alt="TrailMaster Pro Mountain Bike" id="zoom-image">
+                        <div class="zoom-result" id="zoom-result"></div>
+                    </div>
+                    <div class="thumbnail-container">
+                        <div class="thumbnail active"><img src="images/bike1.jpg" alt="TrailMaster Pro Front View"></div>
+                        <div class="thumbnail"><img src="images/bike2.jpg" alt="TrailMaster Pro Side View"></div>
+                        <div class="thumbnail"><img src="images/bike3.jpg" alt="TrailMaster Pro Detail View"></div>
+                        <div class="thumbnail"><img src="images/bike4.jpg" alt="TrailMaster Pro in Action"></div>
+                    </div>
+                </div>
+                
+                <div class="product-info">
+                    <h1 class="product-title">TrailMaster Pro Mountain Bike</h1>
+                    <div class="product-meta">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(24 reviews)</span>
+                        </div>
+                        <div class="sku">SKU: TM-PRO-2023</div>
+                        <div class="availability">In Stock</div>
+                    </div>
+                    
+                    <div class="price-box">
+                        <span class="current-price">$1,299.99</span>
+                        <span class="old-price">$1,499.99</span>
+                        <span class="discount">Save $200 (13%)</span>
+                    </div>
+                    
+                    <div class="product-description">
+                        <p>The TrailMaster Pro is our flagship mountain bike, designed for serious trail riders who demand performance and durability. With its lightweight aluminum frame, advanced suspension system, and precision gearing, this bike handles technical terrain with ease.</p>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <div class="quantity">
+                            <button class="qty-minus"><i class="fas fa-minus"></i></button>
+                            <input type="number" value="1" min="1">
+                            <button class="qty-plus"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <button class="add-to-cart btn">Add to Cart</button>
+                        <button class="buy-now btn">Buy Now</button>
+                    </div>
+                    
+                    <div class="product-share">
+                        <span>Share:</span>
+                        <a href="#" class="share-facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="share-twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="share-pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://wa.me/?text=Check%20out%20this%20awesome%20TrailMaster%20Pro%20Mountain%20Bike%20on%20PedalPower%20https://pedalpower.com/product/trailmater-pro" class="share-whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    
+                    <div class="product-extra-info">
+                        <div class="info-tabs">
+                            <button class="tab-btn active" data-tab="description">Description</button>
+                            <button class="tab-btn" data-tab="specifications">Specifications</button>
+                            <button class="tab-btn" data-tab="reviews">Reviews</button>
+                            <button class="tab-btn" data-tab="shipping">Shipping</button>
+                        </div>
+                        
+                        <div class="tab-content active" id="description">
+                            <h3>Product Description</h3>
+                            <p>The TrailMaster Pro mountain bike is engineered for performance on the most challenging trails. Its lightweight yet durable aluminum frame provides the perfect balance of strength and agility, while the advanced suspension system absorbs impacts for a smooth ride.</p>
+                            <p>Key features include:</p>
+                            <ul>
+                                <li>Lightweight aluminum frame with hydroformed tubing</li>
+                                <li>120mm travel front suspension fork with lockout</li>
+                                <li>Shimano Deore 1x11-speed drivetrain for reliable shifting</li>
+                                <li>Tektro hydraulic disc brakes for confident stopping power</li>
+                                <li>27.5" tubeless-ready wheels with aggressive tread tires</li>
+                                <li>Dropper post compatible for technical descents</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tab-content" id="specifications">
+                            <h3>Technical Specifications</h3>
+                            <table>
+                                <tr>
+                                    <th>Frame</th>
+                                    <td>6061 Aluminum, 120mm travel</td>
+                                </tr>
+                                <tr>
+                                    <th>Fork</th>
+                                    <td>SR Suntour XCR 34, 120mm travel</td>
+                                </tr>
+                                <tr>
+                                    <th>Drivetrain</th>
+                                    <td>Shimano Deore 1x11-speed</td>
+                                </tr>
+                                <tr>
+                                    <th>Brakes</th>
+                                    <td>Tektro HD-M275 hydraulic disc, 180mm rotors</td>
+                                </tr>
+                                <tr>
+                                    <th>Wheels</th>
+                                    <td>27.5" alloy, tubeless-ready</td>
+                                </tr>
+                                <tr>
+                                    <th>Tires</th>
+                                    <td>Maxxis Ardent, 27.5x2.4"</td>
+                                </tr>
+                                <tr>
+                                    <th>Weight</th>
+                                    <td>13.2 kg (29.1 lbs)</td>
+                                </tr>
+                                <tr>
+                                    <th>Sizes</th>
+                                    <td>S, M, L, XL</td>
+                                </tr>
+                                <tr>
+                                    <th>Recommended Rider Height</th>
+                                    <td>S: 5'1"-5'5", M: 5'5"-5'9", L: 5'9"-6'1", XL: 6'1"-6'5"</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <div class="tab-content" id="reviews">
+                            <h3>Customer Reviews</h3>
+                            <div class="review-summary">
+                                <div class="average-rating">
+                                    <div class="avg-rating-number">4.5</div>
+                                    <div class="avg-rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <div class="total-reviews">Based on 24 reviews</div>
+                                </div>
+                                <div class="rating-bars">
+                                    <div class="rating-bar">
+                                        <span>5 stars</span>
+                                        <div class="bar-container">
+                                            <div class="bar" style="width: 70%;"></div>
+                                        </div>
+                                        <span>17</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>4 stars</span>
+                                        <div class="bar-container">
+                                            <div class="bar" style="width: 20%;"></div>
+                                        </div>
+                                        <span>5</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>3 stars</span>
+                                        <div class="bar-container">
+                                            <div class="bar" style="width: 5%;"></div>
+                                        </div>
+                                        <span>1</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>2 stars</span>
+                                        <div class="bar-container">
+                                            <div class="bar" style="width: 0%;"></div>
+                                        </div>
+                                        <span>0</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>1 star</span>
+                                        <div class="bar-container">
+                                            <div class="bar" style="width: 5%;"></div>
+                                        </div>
+                                        <span>1</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="review-form">
+                                <h4>Write a Review</h4>
+                                <form>
+                                    <div class="form-group">
+                                        <label>Your Rating</label>
+                                        <div class="rating-input">
+                                            <input type="radio" name="rating" id="star5" value="5"><label for="star5"><i class="fas fa-star"></i></label>
+                                            <input type="radio" name="rating" id="star4" value="4"><label for="star4"><i class="fas fa-star"></i></label>
+                                            <input type="radio" name="rating" id="star3" value="3"><label for="star3"><i class="fas fa-star"></i></label>
+                                            <input type="radio" name="rating" id="star2" value="2"><label for="star2"><i class="fas fa-star"></i></label>
+                                            <input type="radio" name="rating" id="star1" value="1"><label for="star1"><i class="fas fa-star"></i></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="review-name">Name</label>
+                                        <input type="text" id="review-name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="review-email">Email</label>
+                                        <input type="email" id="review-email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="review-title">Review Title</label>
+                                        <input type="text" id="review-title" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="review-text">Your Review</label>
+                                        <textarea id="review-text" rows="5" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn">Submit Review</button>
+                                </form>
+                            </div>
+                            
+                            <div class="customer-reviews">
+                                <div class="review">
+                                    <div class="review-header">
+                                        <div class="review-author">Michael T.</div>
+                                        <div class="review-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <div class="review-date">June 15, 2023</div>
+                                    </div>
+                                    <h5 class="review-title">Best bike I've ever owned</h5>
+                                    <p class="review-text">This bike handles everything I throw at it. The suspension is plush but efficient when pedaling, and the 1x drivetrain is simple and reliable. The brakes have great stopping power even on steep descents.</p>
+                                </div>
+                                
+                                <div class="review">
+                                    <div class="review-header">
+                                        <div class="review-author">Sarah J.</div>
+                                        <div class="review-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <div class="review-date">May 28, 2023</div>
+                                    </div>
+                                    <h5 class="review-title">Worth every penny</h5>
+                                    <p class="review-text">Upgraded from an entry-level hardtail and the difference is night and day. The bike climbs better and descends with confidence. The tubeless-ready wheels were easy to set up and have saved me from several flats already.</p>
+                                </div>
+                                
+                                <div class="review">
+                                    <div class="review-header">
+                                        <div class="review-author">David K.</div>
+                                        <div class="review-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <div class="review-date">May 10, 2023</div>
+                                    </div>
+                                    <h5 class="review-title">Great bike with minor issues</h5>
+                                    <p class="review-text">Overall very happy with the bike. The only reason I'm not giving 5 stars is that the stock saddle isn't very comfortable for long rides. I replaced it after a few weeks. The shifting needed a slight adjustment out of the box but has been perfect since.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="shipping">
+                            <h3>Shipping & Returns</h3>
+                            <p>We offer free standard shipping on all orders over $50. For orders under $50, a flat shipping fee of $9.99 applies.</p>
+                            <p>Estimated delivery times:</p>
+                            <ul>
+                                <li>Standard Shipping: 3-5 business days</li>
+                                <li>Express Shipping: 1-2 business days ($14.99)</li>
+                            </ul>
+                            <p>We offer a 30-day return policy. Items must be in original condition with all tags attached. Bikes must be returned in the original packaging and may be subject to a restocking fee of 10%.</p>
+                            <p>For international shipping, please contact us for rates and delivery times.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="related-products">
+                <h2>You May Also Like</h2>
+                <div class="related-products-grid">
+                    <!-- Related products will be loaded via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Get the latest updates on new products, promotions and cycling tips.</p>
+                <form id="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>PedalPower</h3>
+                    <p>Your one-stop shop for premium bikes and cycling accessories. We're passionate about cycling and committed to providing quality products.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="#deals">Top Deals</a></li>
+                        <li><a href="affiliate.html">Affiliate Program</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns & Refunds</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col" id="contact">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Cycling Road, Bike City</li>
+                        <li><i class="fas fa-phone"></i> +1 (234) 567-8900</li>
+                        <li><i class="fas fa-envelope"></i> info@pedalpower.com</li>
+                        <li><i class="fab fa-whatsapp"></i> +254712345678</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 PedalPower. All Rights Reserved.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                    <i class="fab fa-cc-apple-pay"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/product-detail.js"></script>
+</body>
+</html>

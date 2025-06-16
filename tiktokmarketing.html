@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Affiliate TikTok Strategy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2ecc71;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --gray: #7f8c8d;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1335&q=80') center/cover no-repeat;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        h1 {
+            font-family: 'Raleway', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: white;
+            text-shadow: 0 0 15px rgba(46, 204, 113, 0.7);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--light);
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            min-width: 200px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-card i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .stat-card .number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .stat-card .label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .strategy-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .strategy-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .strategy-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .strategy-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .strategy-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .strategy-card h3 i {
+            background: rgba(46, 204, 113, 0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .strategy-card ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        .strategy-card li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .strategy-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .tips-container {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 50px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .tips-container h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--primary);
+        }
+
+        .tip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .tip {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .tip i {
+            color: var(--secondary);
+            font-size: 1.8rem;
+            min-width: 50px;
+            height: 50px;
+            background: rgba(52, 152, 219, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5px;
+        }
+
+        .tip-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            margin: 50px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            margin-top: 50px;
+            border-radius: 20px;
+        }
+
+        .hashtag-generator {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .hashtag-generator h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .hashtag-display {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .hashtag {
+            background: rgba(46, 204, 113, 0.2);
+            padding: 8px 15px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        .generate-btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .generate-btn:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .strategy-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .bike-animation {
+            position: fixed;
+            bottom: 0;
+            width: 100px;
+            z-index: -1;
+            animation: ride 25s linear infinite;
+        }
+
+        @keyframes ride {
+            0% { left: -100px; }
+            100% { left: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bike-animation">
+        <i class="fas fa-bicycle" style="font-size: 50px; color: rgba(255,255,255,0.3);"></i>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1>TikTok Bike Affiliate Strategy</h1>
+            <p class="subtitle">Maximize your bike affiliate sales with this proven TikTok strategy framework</p>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <i class="fas fa-video"></i>
+                    <div class="number">3.1M</div>
+                    <div class="label">Avg. Views Per Day</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <div class="number">78%</div>
+                    <div class="label">Engagement Boost</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-shopping-cart"></i>
+                    <div class="number">42%</div>
+                    <div class="label">Conversion Rate</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="strategy-container">
+            <div class="strategy-card">
+                <h3><i class="fas fa-bicycle"></i> Content Strategy</h3>
+                <ul>
+                    <li>Showcase bikes in scenic locations</li>
+                    <li>Create "day in the life" biking videos</li>
+                    <li>Film bike unboxing and assembly</li>
+                    <li>Share bike maintenance tips</li>
+                    <li>Capture exciting riding moments</li>
+                    <li>Compare different bike models</li>
+                    <li>Highlight bike features and specs</li>
+                </ul>
+            </div>
+            
+            <div class="strategy-card">
+                <h3><i class="fas fa-music"></i> Trending Elements</h3>
+                <ul>
+                    <li>Use top 10 trending sounds daily</li>
+                    <li>Incorporate popular TikTok effects</li>
+                    <li>Participate in biking challenges</li>
+                    <li>Leverage seasonal trends (holidays, weather)</li>
+                    <li>Add popular meme formats to bike content</li>
+                    <li>Use text overlays for key messages</li>
+                    <li>Include trending transitions</li>
+                </ul>
+            </div>
+            
+            <div class="strategy-card">
+                <h3><i class="fas fa-hashtag"></i> Hashtag Strategy</h3>
+                <ul>
+                    <li>Mix popular (1M+), mid-range, and niche tags</li>
+                    <li>Include #biketok #cycling #bikelife</li>
+                    <li>Use affiliate-specific tags</li>
+                    <li>Create branded hashtag for your content</li>
+                    <li>Include location-based tags</li>
+                    <li>Use bike type-specific tags (#mtb #roadbike)</li>
+                    <li>Add challenge and trend hashtags</li>
+                </ul>
+            </div>
+            
+            <div class="strategy-card">
+                <h3><i class="fas fa-retweet"></i> Duet & Stitch</h3>
+                <ul>
+                    <li>Duet with popular biking creators</li>
+                    <li>Stitch bike maintenance tutorials</li>
+                    <li>Respond to bike-related questions</li>
+                    <li>Create "before/after" transformations</li>
+                    <li>Duet with customer testimonials</li>
+                    <li>Stitch "myth vs fact" bike videos</li>
+                    <li>Collaborate with non-bike creators</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="hashtag-generator">
+            <h3>Bike Affiliate Hashtag Generator</h3>
+            <p>Click to generate trending hashtag combinations</p>
+            <div class="hashtag-display" id="hashtagDisplay">
+                #biketok #cycling #affiliatemarketing
+            </div>
+            <button class="generate-btn" id="generateBtn">Generate Hashtags</button>
+        </div>
+
+        <div class="tips-container">
+            <h2>Pro Tips for Success</h2>
+            <div class="tip-grid">
+                <div class="tip">
+                    <i class="fas fa-link"></i>
+                    <div class="tip-content">
+                        <h4>Affiliate Link Placement</h4>
+                        <p>Place your affiliate link in bio and use TikTok's "link in bio" call-to-action in every video. Mention it verbally in longer videos.</p>
+                    </div>
+                </div>
+                <div class="tip">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div class="tip-content">
+                        <h4>Posting Schedule</h4>
+                        <p>Post 3-5 times daily during peak hours (7-10AM, 5-8PM). Maintain consistency for algorithm favorability.</p>
+                    </div>
+                </div>
+                <div class="tip">
+                    <i class="fas fa-chart-line"></i>
+                    <div class="tip-content">
+                        <h4>Analytics Tracking</h4>
+                        <p>Monitor TikTok analytics weekly. Focus on watch time, shares, and click-through rates to optimize content.</p>
+                    </div>
+                </div>
+                <div class="tip">
+                    <i class="fas fa-gift"></i>
+                    <div class="tip-content">
+                        <h4>Promotions</h4>
+                        <p>Offer exclusive discount codes through your affiliate program. Create urgency with limited-time offers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+    
+    <footer>
+        <p>Bike Affiliate TikTok Strategy &copy; 2025 | Created for Affiliate Marketers</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hashtagDisplay = document.getElementById('hashtagDisplay');
+            const generateBtn = document.getElementById('generateBtn');
+            
+            const bikingTags = [
+                '#biketok', '#cycling', '#bikelife', '#mtb', '#roadbike', '#bike',
+                '#cyclinglife', '#bikeporn', '#biker', '#bikes', '#bicycle', '#bikestagram',
+                '#cyclist', '#bikecommute', '#bikewrench', '#bikemaintenance'
+            ];
+            
+            const affiliateTags = [
+                '#affiliatemarketing', '#affiliate', '#makemoneyonline', '#sidehustle',
+                '#passiveincome', '#earnmoney', '#affiliatelife', '#digitalmarketing',
+                '#workfromhome', '#onlinemoney', '#affiliates', '#commission'
+            ];
+            
+            const trendingTags = [
+                '#viral', '#trending', '#fyp', '#foryou', '#foryoupage', '#tiktok',
+                '#trend', '#explorepage', '#viralvideos', '#mustwatch', '#trendingsounds'
+            ];
+            
+            function generateHashtags() {
+                // Select random tags from each category
+                const selectedBiking = [];
+                const selectedAffiliate = [];
+                const selectedTrending = [];
+                
+                for(let i = 0; i < 4; i++) {
+                    selectedBiking.push(bikingTags[Math.floor(Math.random() * bikingTags.length)]);
+                    selectedAffiliate.push(affiliateTags[Math.floor(Math.random() * affiliateTags.length)]);
+                    selectedTrending.push(trendingTags[Math.floor(Math.random() * trendingTags.length)]);
+                }
+                
+                // Combine and remove duplicates
+                const allTags = [...selectedBiking, ...selectedAffiliate, ...selectedTrending];
+                const uniqueTags = [...new Set(allTags)];
+                
+                // Shuffle the array
+                for (let i = uniqueTags.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [uniqueTags[i], uniqueTags[j]] = [uniqueTags[j], uniqueTags[i]];
+                }
+                
+                // Display only 8-10 tags
+                const displayTags = uniqueTags.slice(0, 8 + Math.floor(Math.random() * 3));
+                
+                hashtagDisplay.innerHTML = '';
+                displayTags.forEach(tag => {
+                    const span = document.createElement('span');
+                    span.className = 'hashtag';
+                    span.textContent = tag;
+                    hashtagDisplay.appendChild(span);
+                });
+            }
+            
+            generateBtn.addEventListener('click', generateHashtags);
+            
+            // Add animation to strategy cards on scroll
+            const strategyCards = document.querySelectorAll('.strategy-card');
+            
+            function animateCards() {
+                strategyCards.forEach(card => {
+                    const cardPosition = card.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if(cardPosition < screenPosition) {
+                        card.style.opacity = 1;
+                        card.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+            
+            // Set initial state for animation
+            strategyCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            });
+            
+            window.addEventListener('scroll', animateCards);
+            // Trigger once on load
+            setTimeout(animateCards, 500);
+        });
+    </script>
+</body>
+</html>

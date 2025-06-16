@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Affiliate Instagram Marketing Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --accent: #e74c3c;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--dark);
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--primary);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            background: var(--primary);
+            color: white;
+            font-size: 2.5rem;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .card-content {
+            padding: 30px;
+        }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .card-content ul {
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+
+        .card-content ul li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .card-content ul li:before {
+            content: '•';
+            color: var(--secondary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: -1px;
+            font-size: 1.2rem;
+        }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .strategy-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .strategy-card:hover {
+            transform: scale(1.03);
+        }
+
+        .strategy-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+        }
+
+        .strategy-card h3 i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .stat-card .number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .stat-card .label {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .case-study {
+            background: linear-gradient(to right, var(--dark), #1a2530);
+            color: white;
+            padding: 4rem 0;
+            border-radius: 15px;
+            margin-top: 4rem;
+        }
+
+        .case-study-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .case-study h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding: 0 30px;
+        }
+
+        .testimonial:before, .testimonial:after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--secondary);
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .testimonial:before {
+            top: -20px;
+            left: 0;
+        }
+
+        .testimonial:after {
+            bottom: -50px;
+            right: 0;
+        }
+
+        .author {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .author span {
+            display: block;
+            font-weight: 400;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .cta {
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), #1a5276);
+            color: white;
+            padding: 5rem 0;
+            border-radius: 15px;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 10px auto;
+                max-width: 250px;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+            
+            section {
+                padding: 4rem 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .card-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-bicycle"></i>
+                BikeAffiliates
+            </div>
+            <nav>
+                <a href="joinform.html" class="btn btn-outline">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Instagram Marketing for Bike Affiliates</h1>
+            <p>Master the art of promoting bikes on Instagram with proven strategies to boost engagement, build trust, and increase your affiliate revenue.</p>
+            <div class="hero-buttons">
+              
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Instagram for Bike Affiliates?</h2>
+                <p>Instagram is the perfect platform for bike affiliates to showcase products, build communities, and drive sales through visual storytelling and authentic engagement.</p>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <div class="number">1.35B+</div>
+                    <div class="label">Monthly Active Users</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-shopping-bag"></i>
+                    <div class="number">70%</div>
+                    <div class="label">Shop via Instagram</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-chart-line"></i>
+                    <div class="number">87%</div>
+                    <div class="label">Higher Engagement</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-bicycle"></i>
+                    <div class="number">4.2x</div>
+                    <div class="label">Higher Conversion for Bikes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Strategies Section -->
+    <section id="strategies">
+        <div class="container">
+            <div class="section-title">
+                <h2>Core Instagram Marketing Strategies</h2>
+                <p>Implement these proven tactics to maximize your reach and conversions as a bike affiliate</p>
+            </div>
+
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Leveraging Instagram Reels</h3>
+                        <p>Short, engaging videos that showcase bike features in action</p>
+                        <ul>
+                            <li>Create 15-30 second demo videos highlighting key features</li>
+                            <li>Show bikes in real-life scenarios (commuting, trails, adventures)</li>
+                            <li>Use trending audio to increase discoverability</li>
+                            <li>Add text overlays to emphasize benefits</li>
+                            <li>Include clear CTAs in captions and on-screen text</li>
+                            <li>Post consistently (3-5 Reels per week)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-camera-retro"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Behind-the-Scenes Content</h3>
+                        <p>Build authenticity and trust with your audience</p>
+                        <ul>
+                            <li>Share your personal bike setup and maintenance routines</li>
+                            <li>Document bike assembly processes</li>
+                            <li>Showcase your workspace and affiliate tools</li>
+                            <li>Share affiliate marketing journey and lessons learned</li>
+                            <li>Feature customer testimonials and success stories</li>
+                            <li>Create "day in the life" content as a bike enthusiast</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-broadcast-tower"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Live Unboxing & Delivery</h3>
+                        <p>Real-time engagement that builds excitement and trust</p>
+                        <ul>
+                            <li>Schedule live sessions for new bike arrivals</li>
+                            <li>Unbox products in real-time showing packaging quality</li>
+                            <li>Demonstrate assembly process with live Q&A</li>
+                            <li>Invite viewers to ask questions during the broadcast</li>
+                            <li>Offer live-exclusive discount codes</li>
+                            <li>Save broadcasts to IGTV for later viewing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Tactics Section -->
+    <section style="background-color: #f0f7ff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Advanced Instagram Tactics</h2>
+                <p>Take your bike affiliate marketing to the next level with these powerful strategies</p>
+            </div>
+
+            <div class="strategy-grid">
+                <div class="strategy-card">
+                    <h3><i class="fas fa-hashtag"></i> Hashtag Strategy</h3>
+                    <p>Use a mix of popular and niche hashtags to reach both broad and targeted audiences. Include industry-specific tags like #BikeLife, #CyclingCommunity, and brand-specific tags like #SpecializedBikes.</p>
+                </div>
+                
+                <div class="strategy-card">
+                    <h3><i class="fas fa-user-friends"></i> Influencer Collaborations</h3>
+                    <p>Partner with micro-influencers in the cycling niche for authentic promotions. Offer them affiliate links or commission structures for sales they generate.</p>
+                </div>
+                
+                <div class="strategy-card">
+                    <h3><i class="fas fa-chart-pie"></i> Analytics & Optimization</h3>
+                    <p>Regularly review Instagram Insights to identify top-performing content. Track link clicks, conversions, and engagement rates to refine your strategy.</p>
+                </div>
+                
+                <div class="strategy-card">
+                    <h3><i class="fas fa-gift"></i> Giveaways & Contests</h3>
+                    <p>Run bike accessory giveaways requiring participants to tag friends, follow your account, and visit your affiliate links. This boosts engagement and expands your reach.</p>
+                </div>
+                
+                <div class="strategy-card">
+                    <h3><i class="fas fa-shopping-cart"></i> Instagram Shopping</h3>
+                    <p>Set up Instagram Shopping to tag products in your posts and stories. Create a seamless path from discovery to purchase for your audience.</p>
+                </div>
+                
+                <div class="strategy-card">
+                    <h3><i class="fas fa-comments"></i> Engagement Strategy</h3>
+                    <p>Respond to all comments and DMs within 24 hours. Ask questions in your captions to encourage conversation. Engage with followers' content to build community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Section -->
+    <section class="case-study">
+        <div class="container case-study-content">
+            <h2>Real Results: Bike Affiliate Success Story</h2>
+            <p class="testimonial">"Implementing these Instagram strategies helped me grow my bike affiliate revenue by 320% in just 6 months. The combination of Reels showing bikes on scenic trails, behind-the-scenes maintenance content, and live unboxings created an authentic connection with my audience that translated directly to sales."</p>
+            <div class="author">
+                Sarah Johnson <span>Full-time Bike Affiliate Marketer</span>
+            </div>
+            <div class="stats-container" style="margin-top: 50px;">
+                <div class="stat-card" style="background: rgba(255,255,255,0.1);">
+                    <i class="fas fa-arrow-up"></i>
+                    <div class="number">320%</div>
+                    <div class="label">Revenue Increase</div>
+                </div>
+                <div class="stat-card" style="background: rgba(255,255,255,0.1);">
+                    <i class="fas fa-user-plus"></i>
+                    <div class="number">18.5K</div>
+                    <div class="label">New Followers</div>
+                </div>
+                <div class="stat-card" style="background: rgba(255,255,255,0.1);">
+                    <i class="fas fa-link"></i>
+                    <div class="number">42%</div>
+                    <div class="label">CTR to Affiliate Links</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="cta">
+        <div class="container">
+            <h2>Ready to Boost Your Bike Affiliate Revenue?</h2>
+            <p>Download our comprehensive 28-page Instagram Marketing Guide for Bike Affiliates packed with templates, content calendars, and advanced strategies to maximize your earnings.</p>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>BikeAffiliates</h3>
+                    <p>Your complete resource for successful bike affiliate marketing on Instagram and beyond.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Affiliate Programs</a></li>
+                        <li><a href="#">Content Templates</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Product Reviews</a></li>
+                        <li><a href="#">Commission Trackers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Strategies</h3>
+                    <ul>
+                        <li><a href="#">Instagram Marketing</a></li>
+                        <li><a href="#">Reels Strategy</a></li>
+                        <li><a href="#">Live Streaming</a></li>
+                        <li><a href="#">Story Tactics</a></li>
+                        <li><a href="#">Influencer Collabs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Affiliate Disclosure</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">FTC Guidelines</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 BikeAffiliates. All rights reserved. | Designed for passionate bike marketers</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple animation for stat counters
+        const statCards = document.querySelectorAll('.stat-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const numberElement = entry.target.querySelector('.number');
+                    const finalValue = parseInt(numberElement.textContent);
+                    let currentValue = 0;
+                    
+                    const increment = finalValue / 50;
+                    
+                    const timer = setInterval(() => {
+                        currentValue += increment;
+                        if (currentValue >= finalValue) {
+                            clearInterval(timer);
+                            currentValue = finalValue;
+                        }
+                        numberElement.textContent = Math.ceil(currentValue) + (numberElement.textContent.includes('%') ? '%' : '');
+                    }, 30);
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        statCards.forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
