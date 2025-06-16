@@ -1042,21 +1042,20 @@
                 // Add crown to top seller
                 const crown = index === 0 ? '<div class="aff-crown"><i class="fas fa-crown"></i></div>' : '';
                 
-                    item.innerHTML = `
-    ${crown}
-    <div class="aff-rank ${index < 3 ? 'aff-rank-' + (index + 1) : ''}">${index + 1}</div>
-    <div class="aff-info">
-        <div class="aff-name">${seller.name}</div>
-        <div class="aff-stats">
-            <span>Sales: <span class="aff-sales">${seller.sales.toLocaleString()}</span></span>
-            <span>Commission: Ksh <span class="aff-commission">${seller.commission.toLocaleString()}</span></span>
-        </div>
-        <div class="aff-progress-bar">
-            <div class="aff-progress" style="width: ${seller.progress}%"></div>
-        </div>
-    </div>
-`;
-
+                item.innerHTML = 
+                    ${crown}
+                    <div class="aff-rank ${index < 3 ? 'aff-rank-' + (index + 1) : ''}">${index + 1}</div>
+                    <div class="aff-info">
+                        <div class="aff-name">${seller.name}</div>
+                        <div class="aff-stats">
+                            <span>Sales: <span class="aff-sales">${seller.sales.toLocaleString()}</span></span>
+                            <span>Commission: ksh <span class="aff-commission">${seller.commission.toLocaleString()}</span></span>
+                        </div>
+                        <div class="aff-progress-bar">
+                            <div class="aff-progress" style="width: ${seller.progress}%"></div>
+                        </div>
+                    </div>
+                ;
 
                 
                 affLeaderboard.appendChild(item);
